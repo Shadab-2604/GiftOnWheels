@@ -25,10 +25,6 @@ A modern React-based car inventory management system with a beautiful UI and sep
 ```bash
 npm install
 ```
-
-2. Configure environment variables in `.env`:
-```
-VITE_API_BASE_URL=https://gow-backend.onrender.com/api
 ```
 
 3. Run development server:
