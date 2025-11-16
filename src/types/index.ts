@@ -5,8 +5,7 @@ export interface Car {
   color?: string;
   year: number;
   price: number;
-  category: 'Sedan' | 'SUV' | 'Sports' | 'Luxury' | 'Electric';
-  rarity: 'common' | 'rare' | 'epic' | 'legendary';
+  category: 'Mainlines' | 'Premium' | 'Series';
   inStock: boolean;
   description?: string;
   imageUrl?: string;

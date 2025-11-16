@@ -10,17 +10,10 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: CarCardProps) {
-  const rarityColors = {
-    common: 'bg-gray-100 text-gray-800',
-    rare: 'bg-blue-100 text-blue-800',
-    epic: 'bg-purple-100 text-purple-800',
-    legendary: 'bg-amber-100 text-amber-800',
-  };
-
   const categoryColors = {
-    Sedan: 'bg-green-100 text-green-800',
-    SUV: 'bg-indigo-100 text-indigo-800',
-    Sports: 'bg-red-100 text-red-800',
+    Mainlines: 'bg-green-100 text-green-800',
+    Premium: 'bg-indigo-100 text-indigo-800',
+    Series: 'bg-red-100 text-red-800',
     Luxury: 'bg-yellow-100 text-yellow-800',
     Electric: 'bg-cyan-100 text-cyan-800',
   };
@@ -36,11 +29,6 @@ export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: C
             e.currentTarget.src = 'https://via.placeholder.com/400x300?text=No+Image';
           }}
         />
-        <div className="absolute top-3 right-3 flex flex-col gap-2">
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${rarityColors[car.rarity]}`}>
-            {car.rarity.toUpperCase()}
-          </span>
-        </div>
       </div>
 
       <div className="p-5">

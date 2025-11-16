@@ -16,8 +16,7 @@ export default function CarModal({ isOpen, onClose, onSubmit, editCar }: CarModa
     color: '',
     year: new Date().getFullYear(),
     price: '',
-    category: 'Sedan',
-    rarity: 'common',
+    category: 'Mainlines',
     inStock: true,
     description: '',
   });
@@ -32,10 +31,9 @@ export default function CarModal({ isOpen, onClose, onSubmit, editCar }: CarModa
         color: editCar.color || '',
         year: editCar.year,
         price: editCar.price.toString(),
-        category: editCar.category,
-        rarity: editCar.rarity,
-        inStock: editCar.inStock,
-        description: editCar.description || '',
+        category: 'Mainlines',
+        inStock: true,
+        description: '',
       });
       setImagePreview(editCar.imageUrl || '');
     } else {
@@ -45,8 +43,7 @@ export default function CarModal({ isOpen, onClose, onSubmit, editCar }: CarModa
         color: '',
         year: new Date().getFullYear(),
         price: '',
-        category: 'Sedan',
-        rarity: 'common',
+        category: 'Mainlines',
         inStock: true,
         description: '',
       });
@@ -76,7 +73,6 @@ export default function CarModal({ isOpen, onClose, onSubmit, editCar }: CarModa
     data.append('year', formData.year.toString());
     data.append('price', formData.price);
     data.append('category', formData.category);
-    data.append('rarity', formData.rarity);
     data.append('inStock', formData.inStock.toString());
     data.append('description', formData.description);
     if (imageFile) {
@@ -178,28 +174,9 @@ export default function CarModal({ isOpen, onClose, onSubmit, editCar }: CarModa
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
               >
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Sports">Sports</option>
-                <option value="Luxury">Luxury</option>
-                <option value="Electric">Electric</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Rarity *
-              </label>
-              <select
-                required
-                value={formData.rarity}
-                onChange={(e) => setFormData({ ...formData, rarity: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
-              >
-                <option value="common">Common</option>
-                <option value="rare">Rare</option>
-                <option value="epic">Epic</option>
-                <option value="legendary">Legendary</option>
+                <option value="Mainlines">Mainlines</option>
+                <option value="Premium">Premium</option>
+                <option value="Series">Series</option>
               </select>
             </div>
 

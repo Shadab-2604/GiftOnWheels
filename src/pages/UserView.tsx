@@ -14,7 +14,6 @@ export default function UserView() {
   const [filters, setFilters] = useState({
     search: '',
     category: 'all',
-    rarity: 'all',
     sort: 'new',
   });
 
@@ -54,10 +53,6 @@ export default function UserView() {
 
     if (filters.category !== 'all') {
       filtered = filtered.filter((car) => car.category === filters.category);
-    }
-
-    if (filters.rarity !== 'all') {
-      filtered = filtered.filter((car) => car.rarity === filters.rarity);
     }
 
     filtered.sort((a, b) => {
@@ -118,11 +113,9 @@ export default function UserView() {
         <FilterBar
           search={filters.search}
           category={filters.category}
-          rarity={filters.rarity}
           sort={filters.sort}
           onSearchChange={(value) => setFilters({ ...filters, search: value })}
           onCategoryChange={(value) => setFilters({ ...filters, category: value })}
-          onRarityChange={(value) => setFilters({ ...filters, rarity: value })}
           onSortChange={(value) => setFilters({ ...filters, sort: value })}
         />
 

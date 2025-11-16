@@ -3,22 +3,18 @@ import { Search } from 'lucide-react';
 interface FilterBarProps {
   search: string;
   category: string;
-  rarity: string;
   sort: string;
   onSearchChange: (value: string) => void;
   onCategoryChange: (value: string) => void;
-  onRarityChange: (value: string) => void;
   onSortChange: (value: string) => void;
 }
 
 export default function FilterBar({
   search,
   category,
-  rarity,
   sort,
   onSearchChange,
   onCategoryChange,
-  onRarityChange,
   onSortChange,
 }: FilterBarProps) {
   return (
@@ -41,23 +37,9 @@ export default function FilterBar({
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white"
         >
           <option value="all">All Categories</option>
-          <option value="Sedan">Sedan</option>
-          <option value="SUV">SUV</option>
-          <option value="Sports">Sports</option>
-          <option value="Luxury">Luxury</option>
-          <option value="Electric">Electric</option>
-        </select>
-
-        <select
-          value={rarity}
-          onChange={(e) => onRarityChange(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all bg-white"
-        >
-          <option value="all">All Rarities</option>
-          <option value="common">Common</option>
-          <option value="rare">Rare</option>
-          <option value="epic">Epic</option>
-          <option value="legendary">Legendary</option>
+          <option value="Mainlines">Mainlines</option>
+          <option value="Premium">Premium</option>
+          <option value="Series">Series</option>
         </select>
 
         <select
