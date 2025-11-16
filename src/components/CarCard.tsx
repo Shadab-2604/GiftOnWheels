@@ -41,13 +41,11 @@ export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: C
           <span className={`px-3 py-1 rounded-full text-xs font-medium ${categoryColors[car.category]}`}>
             {car.category}
           </span>
-          {isAdmin && (
-            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-              car.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-            }`}>
-              {car.inStock ? 'In Stock' : 'Out of Stock'}
-            </span>
-          )}
+          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+            car.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+          }`}>
+            {car.inStock ? 'In Stock' : 'Out of Stock'}
+          </span>
         </div>
 
         <div className="text-2xl font-bold text-gray-900 mb-4">₹{car.price.toLocaleString()}</div>
