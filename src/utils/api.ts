@@ -6,6 +6,14 @@ export const api = {
     return response.json();
   },
 
+  async getCar(id: string) {
+    const response = await fetch(`${BASE_URL}/cars/${id}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch car');
+    }
+    return response.json();
+  },
+
   async getSettings() {
     const response = await fetch(`${BASE_URL}/settings`);
     return response.json();

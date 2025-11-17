@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Car } from '../types';
 import { MessageCircle } from 'lucide-react';
 
@@ -10,6 +11,8 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: CarCardProps) {
+  const navigate = useNavigate();
+  
   const categoryColors = {
     Mainlines: 'bg-green-100 text-green-800',
     Premium: 'bg-indigo-100 text-indigo-800',
@@ -18,8 +21,19 @@ export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: C
     Electric: 'bg-cyan-100 text-cyan-800',
   };
 
+  const handleCardClick = () => {
+    if (!isAdmin) {
+      navigate(`/car/${car._id}`);
+    }
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+    <div 
+      className={`bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group ${
+        !isAdmin ? 'cursor-pointer' : ''
+      }`}
+      onClick={!isAdmin ? handleCardClick : undefined}
+    >
       <div className="relative overflow-hidden h-56">
         <img
           src={car.imageUrl || 'https://via.placeholder.com/400x300?text=No+Image'}
@@ -53,13 +67,19 @@ export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: C
         {isAdmin ? (
           <div className="flex gap-2">
             <button
-              onClick={() => onEdit?.(car._id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit?.(car._id);
+              }}
               className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg font-medium transition-colors"
             >
               Edit
             </button>
             <button
-              onClick={() => onDelete?.(car._id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete?.(car._id);
+              }}
               className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-lg font-medium transition-colors"
             >
               Delete
@@ -67,7 +87,10 @@ export default function CarCard({ car, onEnquire, onEdit, onDelete, isAdmin }: C
           </div>
         ) : (
           <button
-            onClick={() => onEnquire?.(car.name)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEnquire?.(car.name);
+            }}
             className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
           >
             <MessageCircle size={20} />
